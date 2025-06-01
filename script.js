@@ -36,5 +36,11 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-console.log(playRound(getHumanChoice(), getComputerChoice()));
-console.log("You: " + humanScore + "\nComputer: " + computerScore);
+function playGame() {
+    for (let i = 1; i <= 5; i++) {
+        console.log(playRound(getHumanChoice(), getComputerChoice()));
+        console.log("You: " + humanScore + "\nComputer: " + computerScore);
+    }
+}
+
+playGame();
