@@ -26,10 +26,15 @@ function playRound(humanChoice, computerChoice) {
         "paper": "rock",
         "scissors": "paper"
     };
-    if (scores[humanChoice] === computerChoice)
+    if (scores[humanChoice] === computerChoice) {
+        ++humanScore;
         return "You win! " + humanChoice + " beats " + computerChoice;
-    else
+    }
+    else {
+        ++computerScore;
         return "You lose! " + computerChoice + " beats " + humanChoice;
+    }
 }
 
 console.log(playRound(getHumanChoice(), getComputerChoice()));
+console.log("You: " + humanScore + "\nComputer: " + computerScore);
