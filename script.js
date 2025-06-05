@@ -10,10 +10,6 @@ function getComputerChoice() {
     return choice;
 }
 
-function getHumanChoice() {
-    return prompt("Rock, paper or scissors?");
-}
-
 let humanScore = 0;
 let computerScore = 0;
 
@@ -36,11 +32,21 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-function playGame() {
-    for (let i = 1; i <= 5; i++) {
-        console.log(playRound(getHumanChoice(), getComputerChoice()));
-        console.log("You: " + humanScore + "\nComputer: " + computerScore);
-    }
-}
-
-playGame();
+const container = document.querySelector("#container");
+const resultText = document.querySelector("#result");
+const playerScoreDiv = document.querySelector("#player-score");
+const computerScoreDiv = document.querySelector("#computer-score");
+const buttons = document.querySelectorAll("button");
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        resultText.textContent = playRound(button.id, getComputerChoice());
+        playerScoreDiv.textContent = `You: ${humanScore}`
+        computerScoreDiv.textContent = `Computer: ${computerScore}`;
+        if (humanScore === 5) {
+            alert(`Congratulations! You win ${humanScore} : ${computerScore}`);
+        }
+        if (computerScore === 5) {
+            alert(`Unlucky! Computer wins ${computerScore} : ${humanScore}`);
+        }
+    });
+});
